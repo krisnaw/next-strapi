@@ -77,6 +77,18 @@ export interface LayoutHeroSection extends Struct.ComponentSchema {
   };
 }
 
+export interface LayoutTfHeader extends Struct.ComponentSchema {
+  collectionName: 'components_layout_tf_headers';
+  info: {
+    displayName: 'TF Header';
+  };
+  attributes: {
+    cta: Schema.Attribute.Component<'elements.link', false>;
+    logo: Schema.Attribute.Component<'elements.logo', false>;
+    navigation: Schema.Attribute.Component<'elements.link', true>;
+  };
+}
+
 export interface SharedMedia extends Struct.ComponentSchema {
   collectionName: 'components_shared_media';
   info: {
@@ -148,6 +160,7 @@ declare module '@strapi/strapi' {
       'elements.link': ElementsLink;
       'elements.logo': ElementsLogo;
       'layout.hero-section': LayoutHeroSection;
+      'layout.tf-header': LayoutTfHeader;
       'shared.media': SharedMedia;
       'shared.quote': SharedQuote;
       'shared.rich-text': SharedRichText;

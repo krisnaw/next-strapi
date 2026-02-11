@@ -46,9 +46,34 @@ const homePageQuery = qs.stringify(
 )
 
 export async function getHomePage() {
-  const path = "/api/home-page"
+  const path = "/api/tf-home-page"
   const BASE_URL = getStrapiURL()
   const url = new URL(path, BASE_URL);
-  url.search = homePageQuery;
+  return await fetchAPI(url.href, { method: "GET" });
+}
+
+const globalSettingQuery = qs.stringify({
+  populate: {
+    header: {
+      populate: {
+        logo: {
+          populate: {
+            image: {
+              fields: ["url", "alternativeText"],
+            },
+          },
+        },
+        navigation: true,
+        cta: true,
+      },
+    },
+  },
+});
+
+export async function getGlobalSettings() {
+  const path = "/api/tf-global"
+  const BASE_URL = getStrapiURL()
+  const url = new URL(path, BASE_URL);
+  url.search = globalSettingQuery;
   return await fetchAPI(url.href, { method: "GET" });
 }

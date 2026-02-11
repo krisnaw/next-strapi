@@ -9,8 +9,7 @@ async function loader() {
 
 export default async function Home() {
   const strapiData = await loader();
-  const {title, description, blocks} = strapiData.data;
-  console.log(blocks);
+  const {title, description} = strapiData.data;
   return (
     <main className="container mx-auto py-6">
       <h1 className="text-5xl font-bold">{title}</h1>
