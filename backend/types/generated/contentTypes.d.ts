@@ -664,12 +664,12 @@ export interface ApiHomePageHomePage extends Struct.SingleTypeSchema {
   };
 }
 
-export interface ApiOurTeamOurTeam extends Struct.CollectionTypeSchema {
-  collectionName: 'our_teams';
+export interface ApiPagePage extends Struct.CollectionTypeSchema {
+  collectionName: 'pages';
   info: {
-    displayName: 'Our Team';
-    pluralName: 'our-teams';
-    singularName: 'our-team';
+    displayName: 'Page';
+    pluralName: 'pages';
+    singularName: 'page';
   };
   options: {
     draftAndPublish: true;
@@ -679,11 +679,9 @@ export interface ApiOurTeamOurTeam extends Struct.CollectionTypeSchema {
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     description: Schema.Attribute.Text;
+    image: Schema.Attribute.Media<'images'>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::our-team.our-team'
-    > &
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::page.page'> &
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
     slug: Schema.Attribute.UID<'title'>;
@@ -1271,7 +1269,7 @@ declare module '@strapi/strapi' {
       'api::category.category': ApiCategoryCategory;
       'api::global.global': ApiGlobalGlobal;
       'api::home-page.home-page': ApiHomePageHomePage;
-      'api::our-team.our-team': ApiOurTeamOurTeam;
+      'api::page.page': ApiPagePage;
       'api::tf-global.tf-global': ApiTfGlobalTfGlobal;
       'api::tf-home-page.tf-home-page': ApiTfHomePageTfHomePage;
       'plugin::content-releases.release': PluginContentReleasesRelease;

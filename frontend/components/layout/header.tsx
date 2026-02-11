@@ -3,7 +3,6 @@ import Link from "next/link";
 import {StrapiImage} from "@/components/blocks/StrapiImage";
 
 export function Header({data} : {data: any}) {
-  console.log(data)
   const { logo, cta, navigation } = data;
   return (
     <nav className="fixed top-0 w-full">

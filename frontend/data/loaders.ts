@@ -52,6 +52,33 @@ export async function getHomePage() {
   return await fetchAPI(url.href, { method: "GET" });
 }
 
+const pageBySlugQuery = (slug: string) => qs.stringify(
+  {
+    filters: {
+      slug: {
+        $eq: slug,
+      },
+    },
+    populate: {
+      image: {
+        fields: [
+          "url",
+          "alternativeText"
+        ]
+      },
+    }
+  },
+);
+
+
+export async function getPageBySlug(slug: string) {
+  const path = `/api/pages`
+  const BASE_URL = getStrapiURL()
+  const url = new URL(path, BASE_URL);
+  url.search = pageBySlugQuery(slug)
+  return await fetchAPI(url.href, { method: "GET" });
+}
+
 const globalSettingQuery = qs.stringify({
   populate: {
     header: {
