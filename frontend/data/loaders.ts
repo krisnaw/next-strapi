@@ -69,7 +69,7 @@ const pageBySlugQuery = (slug: string) => qs.stringify(
               },
               cta: true,
             },
-          }
+          },
         }
       },
       image: {
