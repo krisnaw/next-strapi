@@ -1,18 +1,10 @@
-// async function loader(slug: string) {
-//   const {data} = await getPageBySlug(slug);
-//   if (data.length === 0 ) notFound();
-//   return { data: data[0], blocks: data[0].blocks[0] };
-// }
+export default async function Page() {
 
-
-export default async function Page({params}: {
-  params: Promise<{ slug: string }>
-}) {
-  const { slug } = await params
   // const { data, blocks } = await loader(slug);
   // console.log(blocks.headline)
   return (
     <div className="w-full bg-white">
+      helos
       {/*<div className="h-screen">*/}
       {/*  <StrapiImage className="object-cover max-h-60"*/}
       {/*    width={2800} height={281} sizes="(max-width: 2800px) 100vw, 2800px"*/}
