@@ -11,7 +11,7 @@ export function Header({data} : {data: any}) {
         <div className="mx-auto max-w-7xl py-4 px-2 sm:px-6 lg:px-8 bg-slate-50/70 rounded-xl">
           <div className="relative flex h-16 items-center justify-between">
             <div>
-              <StrapiImage   width={227}
+              <StrapiImage width={227}
                              height={120} src={logo.image.url} alt={logo.logoText} />
             </div>
 

@@ -49,7 +49,7 @@ export async function getHomePage() {
   const path = "/api/tf-home-page"
   const BASE_URL = getStrapiURL()
   const url = new URL(path, BASE_URL);
-  return await fetchAPI(url.href, { method: "GET" });
+  return await fetchAPI(url.href, {method: "GET"});
 }
 
 const pageBySlugQuery = (slug: string) => qs.stringify(
@@ -60,6 +60,18 @@ const pageBySlugQuery = (slug: string) => qs.stringify(
       },
     },
     populate: {
+      blocks: {
+        on: {
+          "blocks.info-block": {
+            populate: {
+              image: {
+                fields: ["url", "alternativeText"],
+              },
+              cta: true,
+            },
+          }
+        }
+      },
       image: {
         fields: [
           "url",
@@ -70,13 +82,12 @@ const pageBySlugQuery = (slug: string) => qs.stringify(
   },
 );
 
-
 export async function getPageBySlug(slug: string) {
   const path = `/api/pages`
   const BASE_URL = getStrapiURL()
   const url = new URL(path, BASE_URL);
   url.search = pageBySlugQuery(slug)
-  return await fetchAPI(url.href, { method: "GET" });
+  return await fetchAPI(url.href, {method: "GET"});
 }
 
 const globalSettingQuery = qs.stringify({
@@ -102,5 +113,5 @@ export async function getGlobalSettings() {
   const BASE_URL = getStrapiURL()
   const url = new URL(path, BASE_URL);
   url.search = globalSettingQuery;
-  return await fetchAPI(url.href, { method: "GET" });
+  return await fetchAPI(url.href, {method: "GET"});
 }

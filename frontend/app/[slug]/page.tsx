@@ -14,15 +14,23 @@ export default async function Page({params}: {
   const { slug } = await params
   const { blocks } = await loader(slug);
   return (
-    <div>
-      <img loading="eager" width={1200} height={799} src={`http://localhost:1337${blocks.image.url}`} alt={blocks.image.alternativeText}/>
+    <div className="w-full bg-white">
+      <div className="h-screen">
+        {/*<StrapiImage className="object-cover max-h-60"*/}
+        {/*  width={2800} height={281} sizes="(max-width: 2800px) 100vw, 2800px"*/}
+        {/*             src={blocks.image.url}*/}
+        {/*             alt={blocks.image.alternativeText}*/}
+        {/*/>*/}
 
-      <h2 className="text-5xl  tracking-tight text-gray-900 sm:text-7xl">
-        {blocks.title}
-      </h2>
-      <p className="mt-8 text-lg  text-pretty text-gray-500 sm:text-xl/8">
-        {blocks.description}
-      </p>
+        <div className=" mx-auto max-w-5xl text-center py-24 sm:py-32">
+          <h2 className="text-5xl  tracking-tight text-gray-900 sm:text-7xl">
+            {blocks.title}
+          </h2>
+          <p className="mt-8 text-lg  text-pretty text-gray-500 sm:text-xl/8">
+            {blocks.description}
+          </p>
+        </div>
+      </div>
     </div>
   )
 }
