@@ -25,23 +25,7 @@ export const metadata: Metadata = {
 //   return { header: data?.header};
 // }
 
-const globalSettingQuery = {
-  populate: {
-    header: {
-      populate: {
-        logo: {
-          populate: {
-            image: {
-              fields: ["url", "alternativeText"],
-            },
-          },
-        },
-        navigation: true,
-        cta: true,
-      },
-    },
-  },
-}
+
 
 
 export default async function RootLayout({
@@ -50,7 +34,23 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   // const {header} = await loader();
-  const {header} = await fetchSingleType('tf-global', globalSettingQuery)
+  const {header} = await fetchSingleType('tf-global', {
+    populate: {
+      header: {
+        populate: {
+          logo: {
+            populate: {
+              image: {
+                fields: ["url", "alternativeText"],
+              },
+            },
+          },
+          navigation: true,
+          cta: true,
+        },
+      },
+    },
+  })
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased bg-gray-200`}>
