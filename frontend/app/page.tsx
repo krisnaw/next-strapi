@@ -12,7 +12,6 @@ export default async function Home() {
 
   const {title, description} = await fetchSingleType('home-page')
 
-
   return (
     <main className="container mx-auto py-6">
       <h1 className="text-5xl font-bold">{title}</h1>

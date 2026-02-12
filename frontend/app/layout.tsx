@@ -1,6 +1,8 @@
 import type {Metadata} from "next";
 import {Geist, Geist_Mono} from "next/font/google";
 import "./globals.css";
+import {fetchSingleType} from "@/lib/strapi/client";
+import {Header} from "@/components/layout/header";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -23,16 +25,36 @@ export const metadata: Metadata = {
 //   return { header: data?.header};
 // }
 
+const globalSettingQuery = {
+  populate: {
+    header: {
+      populate: {
+        logo: {
+          populate: {
+            image: {
+              fields: ["url", "alternativeText"],
+            },
+          },
+        },
+        navigation: true,
+        cta: true,
+      },
+    },
+  },
+}
+
+
 export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   // const {header} = await loader();
+  const {header} = await fetchSingleType('tf-global', globalSettingQuery)
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased bg-gray-200`}>
-      {/*<Header data={header} />*/}
+      <Header data={header} />
         {children}
       </body>
     </html>
