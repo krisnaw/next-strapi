@@ -1,0 +1,26 @@
+{
+  "kind": "singleType",
+  "collectionName": "tf_globals",
+  "info": {
+    "singularName": "tf-global",
+    "pluralName": "tf-globals",
+    "displayName": "TF Global"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "header": {
+      "type": "component",
+      "component": "layout.tf-header",
+      "repeatable": false
+    }
+  }
+}

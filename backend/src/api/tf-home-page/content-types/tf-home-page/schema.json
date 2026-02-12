@@ -1,0 +1,21 @@
+{
+  "kind": "singleType",
+  "collectionName": "tf_home_pages",
+  "info": {
+    "singularName": "tf-home-page",
+    "pluralName": "tf-home-pages",
+    "displayName": "TF Home Page"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    }
+  }
+}
