@@ -1,0 +1,3 @@
+export {
+  StrapiError,
+} from './client';
