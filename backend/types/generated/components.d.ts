@@ -89,6 +89,72 @@ export interface LayoutTfHeader extends Struct.ComponentSchema {
   };
 }
 
+export interface MenuDropdown extends Struct.ComponentSchema {
+  collectionName: 'components_menu_dropdowns';
+  info: {
+    displayName: 'Dropdown';
+    icon: 'arrowDown';
+  };
+  attributes: {
+    sections: Schema.Attribute.Relation<'oneToMany', 'api::section.section'>;
+    title: Schema.Attribute.String;
+  };
+}
+
+export interface MenuMenuButton extends Struct.ComponentSchema {
+  collectionName: 'components_menu_menu_buttons';
+  info: {
+    displayName: 'MenuButton';
+    icon: 'cursor';
+  };
+  attributes: {
+    title: Schema.Attribute.String;
+    type: Schema.Attribute.Enumeration<['primary', 'secondary']>;
+    url: Schema.Attribute.String;
+  };
+}
+
+export interface MenuMenuHeader extends Struct.ComponentSchema {
+  collectionName: 'components_menu_menu_headers';
+  info: {
+    displayName: 'MenuHeader';
+    icon: 'bulletList';
+  };
+  attributes: {
+    cta: Schema.Attribute.Component<'menu.menu-button', false>;
+    dropdown: Schema.Attribute.Component<'menu.dropdown', true>;
+    link: Schema.Attribute.Component<'menu.menu-link', true>;
+    logo: Schema.Attribute.Component<'elements.logo', false>;
+  };
+}
+
+export interface MenuMenuLink extends Struct.ComponentSchema {
+  collectionName: 'components_menu_menu_links';
+  info: {
+    displayName: 'MenuLink';
+    icon: 'link';
+  };
+  attributes: {
+    isExternal: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
+    title: Schema.Attribute.String;
+    url: Schema.Attribute.String;
+  };
+}
+
+export interface MenuMenuLogo extends Struct.ComponentSchema {
+  collectionName: 'components_menu_menu_logos';
+  info: {
+    displayName: 'MenuLogo';
+    icon: 'picture';
+  };
+  attributes: {
+    image: Schema.Attribute.Media<'images'>;
+    isExternal: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
+    title: Schema.Attribute.String;
+    url: Schema.Attribute.String;
+  };
+}
+
 export interface SharedMedia extends Struct.ComponentSchema {
   collectionName: 'components_shared_media';
   info: {
@@ -161,6 +227,11 @@ declare module '@strapi/strapi' {
       'elements.logo': ElementsLogo;
       'layout.hero-section': LayoutHeroSection;
       'layout.tf-header': LayoutTfHeader;
+      'menu.dropdown': MenuDropdown;
+      'menu.menu-button': MenuMenuButton;
+      'menu.menu-header': MenuMenuHeader;
+      'menu.menu-link': MenuMenuLink;
+      'menu.menu-logo': MenuMenuLogo;
       'shared.media': SharedMedia;
       'shared.quote': SharedQuote;
       'shared.rich-text': SharedRichText;

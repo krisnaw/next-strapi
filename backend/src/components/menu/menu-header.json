@@ -1,0 +1,31 @@
+{
+  "collectionName": "components_menu_menu_headers",
+  "info": {
+    "displayName": "MenuHeader",
+    "icon": "bulletList"
+  },
+  "options": {},
+  "attributes": {
+    "logo": {
+      "type": "component",
+      "component": "elements.logo",
+      "repeatable": false
+    },
+    "dropdown": {
+      "type": "component",
+      "component": "menu.dropdown",
+      "repeatable": true
+    },
+    "link": {
+      "type": "component",
+      "component": "menu.menu-link",
+      "repeatable": true
+    },
+    "cta": {
+      "type": "component",
+      "component": "menu.menu-button",
+      "repeatable": false
+    }
+  },
+  "config": {}
+}

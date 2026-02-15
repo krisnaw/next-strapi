@@ -115,3 +115,42 @@ export async function getGlobalSettings() {
   url.search = globalSettingQuery;
   return await fetchAPI(url.href, {method: "GET"});
 }
+
+const sampleHeaderQuery = qs.stringify({
+  populate: {
+    header: {
+      fields: [],
+      populate: {
+        logo: {
+          fields: ['logoText'],
+          populate: {
+            image: {
+              fields: ["url", "alternativeText"],
+            },
+          },
+        },
+        dropdown: {
+          fields: ['title'],
+          populate : {
+            sections: {
+              fields: ['heading'],
+              populate: {
+                links: true,
+              }
+            }
+          }
+        },
+        link: true,
+        cta: true,
+      },
+    },
+  },
+});
+
+export async function HeaderMenu() {
+  const path = "/api/sample-header"
+  const BASE_URL = getStrapiURL()
+  const url = new URL(path, BASE_URL);
+  url.search = sampleHeaderQuery;
+  return await fetchAPI(url.href, {method: "GET"});
+}
